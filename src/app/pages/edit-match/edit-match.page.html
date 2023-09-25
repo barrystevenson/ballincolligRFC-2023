@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="black" class="ion-icon-toolbar">
+        <ion-buttons slot="start">
+          <ion-buttons slot="start"><ion-button href="/admin-home"> <ion-icon slot="icon-only" name="arrow-back"></ion-icon></ion-button></ion-buttons>
+            <ion-back-button defaultHref="/admin-home"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Edit Match Details</ion-title>
+    <ion-buttons slot="end">
+       <ion-button>
+          <ion-icon slot="end" src="../../assets/icon/logo.svg" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+        
+      <ion-item> 
+        <ion-label position="stacked">Home Team</ion-label>
+         <ion-input [(ngModel)]="homeTeam"
+          type="text" value="{{currentMatchDetails?.home}}">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Away Team</ion-label>
+         <ion-input [(ngModel)]="awayTeam"
+          value="{{currentMatchDetails?.away}}"
+          type="text">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  position="stacked">Match Date</ion-label>
+        <ion-datetime
+          [(ngModel)]="matchDate"
+          displayFormat="D MMM, YYYY HH:mm"
+          pickerFormat="DD MMM YYYY HH:mm"
+          value="{{currentMatchDetails?.date}}">
+        </ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked" >Team</ion-label>
+        <ion-select value="{{currentMatchDetails?.team}}" [(ngModel)]="team">
+            <ion-select-option value="1st XV">1st XV</ion-select-option>
+            <ion-select-option value="2nd XV">2nd XV</ion-select-option>
+            <ion-select-option value="Women's">Women's</ion-select-option>
+            <ion-select-option value="U-18">U-18</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Competition</ion-label>
+         <ion-input   
+         [(ngModel)]="competition"
+         value="{{currentMatchDetails?.competition}}"
+          type="text">
+        </ion-input>
+      </ion-item>    
+
+       <ion-item>
+        <ion-label position="stacked">Venue</ion-label>
+         <ion-input
+          [(ngModel)]="venue"
+          value="{{currentMatchDetails?.venue}}"
+          type="text">
+        </ion-input>
+      </ion-item>
+    
+    
+     <ion-item class="ion-item-header">
+        <ion-label >Team Lineup</ion-label>
+     </ion-item>
+    
+     <ion-item *ngFor="let player of lineup" class="lineup">
+        
+         {{player?.number}}. &nbsp;<ion-label><small>First Name:</small></ion-label>
+         <ion-input
+          [(ngModel)]="firstName"
+          type="text"
+          value ="{{player?.firstName}}">
+         </ion-input>
+         
+         <ion-label><small>Surname:</small></ion-label>
+          
+        <ion-input
+          [(ngModel)]="surname"
+          type="text"
+          value ="{{player?.surname}}">
+        </ion-input>
+    </ion-item>     
+      
+    
+      <ion-item class="ion-item-header">
+        <ion-label>Scorers</ion-label>
+     </ion-item>
+    
+   <ion-button
+    color="black"
+    expand="block"
+    (click)="updateMatch()">
+    Update Match
+  </ion-button>
+</ion-content>

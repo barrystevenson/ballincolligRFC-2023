@@ -1,0 +1,35 @@
+<ion-content>
+
+    
+     <ion-card>
+      <ion-card-content>
+         <ion-list>  
+          <!-- include an if statement to see if tries have been scored - only display this item in that case -->
+          <ion-item>  
+            <ion-label text-wrap>Tries: <font *ngFor="let tryScorer of tryScorers">{{tryScorer.name}} </font>
+            </ion-label>        
+          </ion-item>
+             
+            <!-- include an if statement to see if conversions have been scored - only display this item in that case -->
+          <ion-item>
+            <ion-label text-wrap>Conversions: <font *ngFor="let conversionScorer of conversionScorers">{{conversionScorer.name}} </font></ion-label>
+          </ion-item>
+            <!-- include an if statement to see if penalites have been scored - only display this item in that case -->
+          
+         <ion-item>
+            <ion-label text-wrap>Penalties: <font *ngFor="let penaltyScorer of penaltyScorers">{{penaltyScorer.name}} </font></ion-label>
+          </ion-item>
+             
+            <!-- include an if statement to see if Drop Kicks have been scored - only display this item in that case -->
+          <!--ion-item *ngIf="dropGoalScorers?.length > 0"-->
+          <ion-item *ngIf="this?.dropGoalScorers">
+            
+             <ion-label text-wrap>Drop Goals: <font *ngFor="let dropGoalScorer of dropGoalScorers">{{dropGoalScorer.name}} </font></ion-label>
+          </ion-item>
+          
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    
+    
+</ion-content>

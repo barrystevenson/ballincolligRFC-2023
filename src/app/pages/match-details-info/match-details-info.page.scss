@@ -1,0 +1,21 @@
+
+ion-row{
+  border-color: darkgrey; 
+  border-width: .01em; 
+  border-style:solid; margin-bottom : -1px;
+}
+
+.small-text {
+        font-size: small;
+}
+
+.left-align-text {
+    ion-card-content{
+        text-align: left;
+    }    
+}
+
+ion-card-header{
+    font: bold;
+    font-size: large;
+}

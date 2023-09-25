@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="black" class="ion-icon-toolbar">
+       <ion-buttons slot="start">
+            <ion-button (click)="logOut()">
+                <ion-icon slot="icon-only" name="log-out"></ion-icon>
+            </ion-button>
+      </ion-buttons>
+    <ion-title>Admin Home</ion-title>
+    <ion-buttons slot="end">
+       <ion-button>
+          <ion-icon slot="end" src="../../assets/icon/logo.svg" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    
+<ion-button color="black" expand="block" routerLink="/new-match">
+    Create New Match 
+</ion-button>
+
+    
+     <ion-list>
+        <ion-item *ngFor="let match of matches">
+            <ion-label>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>{{match?.date.seconds * 1000 | date:'d MMM yy' }}</ion-col>
+                        <ion-col class="team-col">{{match?.team}}</ion-col>
+                         <ion-col class="edit-button-col"><ion-button routerLink="/edit-match/{{match.id}}" color="black"><ion-icon name="create" color="green"></ion-icon></ion-button></ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col></ion-col>
+                      <ion-col *ngIf="match?.homeScore != ''; else noScoreReceived">{{match?.home}} {{match?.homeScore}} - {{match?.awayScore}} {{match?.away}}</ion-col>
+                        <ng-template #noScoreReceived>
+                            <ion-col>{{match?.home}} v {{match?.away}}</ion-col>
+                        </ng-template>
+                      <ion-col class="delete-button-col"><ion-button (click)="presentConfirmDeleteMatch(match.id, $event)" color="black"><ion-icon name="trash"></ion-icon></ion-button></ion-col>              
+                    </ion-row>
+                </ion-grid>
+            </ion-label>
+        </ion-item>
+      </ion-list>
+   
+    
+</ion-content>

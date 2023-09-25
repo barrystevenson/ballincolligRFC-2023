@@ -1,0 +1,38 @@
+<ion-content>
+    
+     <ion-card>
+        <ion-card-header *ngIf="currentMatchDetails?.date" class="small-text">
+            {{currentMatchDetails?.date.seconds * 1000 | date:'h:mm a' }}, {{currentMatchDetails?.date.seconds * 1000 | date:'d MMM yyyy' }}, {{currentMatchDetails?.venue}}
+        </ion-card-header>
+      <ion-card-content>
+         <ion-list>  
+              <ion-item *ngIf="currentMatchDetails?.date">  
+                    <ion-label text-wrap>Date:  {{currentMatchDetails?.date.seconds * 1000 | date:'d MMM yyyy' }}
+                    </ion-label>
+               </ion-item>
+                 <ion-item *ngIf="currentMatchDetails?.date">  
+                    <ion-label text-wrap>Time: {{currentMatchDetails?.date.seconds * 1000 | date:'h:mm a' }}
+                    </ion-label>
+               </ion-item>
+                <ion-item>  
+                    <ion-label text-wrap>Competition: {{currentMatchDetails?.competition}}
+                    </ion-label>
+               </ion-item>
+               <ion-item>  
+                    <ion-label text-wrap>Venue: {{currentMatchDetails?.venue}}
+                    </ion-label>
+               </ion-item>
+        </ion-list>      
+      </ion-card-content>
+    </ion-card>
+    
+     <!--ion-card *ngIf="currentMatchDetails?matchReportParagraphs" class="left-align-text">
+         <ion-card-header>
+            Match Report
+         </ion-card-header>
+      <ion-card-content>
+        <p *ngFor="let matchReportParagraph of matchReportParagraphs">{{matchReportParagraph?.paragraph}}</p>
+      </ion-card-content>
+    </ion-card-->
+    
+</ion-content>

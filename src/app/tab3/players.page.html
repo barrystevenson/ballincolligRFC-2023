@@ -1,0 +1,55 @@
+<ion-content padding>
+  
+    
+    
+    
+<ion-accordion-group>
+  <ion-accordion value="mens" color="gold">
+    <ion-item slot="header" color="dark">
+      <ion-label class="squad">Men's Squad</ion-label>
+    </ion-item>
+ <div class="ion-padding" slot="content">
+      <ion-list>
+     <ion-item *ngFor="let mensPlayer of mensSquad" tappable routerLink="/../player-details/{{mensPlayer.id}}">
+
+         
+    <ion-avatar slot="start">
+        <img [src]="mensPlayer?.photoLocation || '/assets/images/noavatar.png'">
+      </ion-avatar>
+      <ion-label>
+        {{mensPlayer?.firstName}} {{mensPlayer?.surname}}
+      </ion-label>  
+        
+    </ion-item>
+  </ion-list>
+      </div>
+     
+  </ion-accordion>
+  
+    <ion-accordion value="womens">
+    <ion-item slot="header" color="dark">
+      <ion-label class="squad">Women's Squad</ion-label>
+    </ion-item>
+        
+        
+     <div class="ion-padding" slot="content">
+      <ion-list>
+     <ion-item *ngFor="let womensPlayer of womensSquad" tappable routerLink="/../player-details/{{womensPlayer.id}}">
+
+         
+    <ion-avatar slot="start">
+        <img [src]="womensPlayer?.photoLocation || '/assets/images/noavatar.png'">
+      </ion-avatar>
+      <ion-label>
+        {{womensPlayer?.firstName}} {{womensPlayer?.surname}}
+      </ion-label>  
+        
+    </ion-item>
+  </ion-list>
+      </div>
+
+    
+    </ion-accordion>
+</ion-accordion-group>
+    
+</ion-content>

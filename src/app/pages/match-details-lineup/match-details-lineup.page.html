@@ -1,0 +1,17 @@
+
+<ion-content>
+
+    <ion-card>
+     <ion-card-content>
+          <ion-list *ngFor="let player of lineup">  
+              <div class="user-photo" padding-top>
+                </div>
+              
+            <ion-item tappable (click)="navigateToPlayerDetails(player?.firstName,player?.surname,allPlayers)">
+             {{player?.number}}.  {{player?.firstName}} {{player?.surname}}  
+              </ion-item>
+            </ion-list>
+      </ion-card-content>
+    </ion-card>
+    
+</ion-content>

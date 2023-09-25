@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="black" class="ion-icon-toolbar">
+        <ion-buttons slot="start"><ion-button href="../../tabs/fixtures"> <ion-icon slot="icon-only" name="arrow-back"></ion-icon></ion-button></ion-buttons>
+         <ion-title>
+            <div class="small-text">{{currentMatchDetails?.team}} {{currentMatchDetails?.competition}}</div>
+            <br/>
+            
+                <div *ngIf="currentMatchDetails?.homeScore != ''; else matchNotPlayed">
+                   {{currentMatchDetails?.home}}
+                   {{currentMatchDetails?.homeScore}} - {{currentMatchDetails?.awayScore}} 
+                   {{currentMatchDetails?.away}}
+                
+                </div>
+             <ng-template #matchNotPlayed>    
+                <div>
+                   {{currentMatchDetails?.home}}
+                    v  
+                   {{currentMatchDetails?.away}}
+                
+                </div>
+            </ng-template>
+            <br/>
+        </ion-title>
+         <ion-buttons slot="end">
+        <ion-icon slot="end" src="../../assets/icon/logo.svg" size="large"></ion-icon>
+    </ion-buttons>
+   </ion-toolbar>    
+</ion-header>
+
+<ion-content  padding>
+
+<ion-tabs>
+
+  <ion-tab-bar slot="top" color="black">
+   
+    <ion-tab-button tab="match-details-info/{{currentMatchDetails?.id}}">
+      <ion-label>Details</ion-label>
+    </ion-tab-button>
+      
+    <!--ion-tab-button  *ngIf="this?.lineup" tab="match-details-lineup/{{currentMatchDetails?.id}}"-->
+    <ion-tab-button  *ngIf="this.lineup?.length" tab="match-details-lineup/{{currentMatchDetails?.id}}">
+      <ion-label>Lineup</ion-label>
+    </ion-tab-button>
+      
+    <ion-tab-button *ngIf="this.tryScorers?.length || this.penaltyScorers?.length || this.dropGoalScorers?.length" tab="match-details-scorers/{{currentMatchDetails?.id}}">
+      <ion-label>Scorers</ion-label>
+    </ion-tab-button>
+      
+      
+  </ion-tab-bar>
+
+  <ng-template #matchNotPlayed>
+      <ion-tab-bar slot="top" color="black">
+
+        <ion-tab-button tab="match-details-info/{{currentMatchDetails?.id}}">
+          <ion-label>Information</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button *ngIf="this.lineup?.length" tab="match-details-lineup/{{currentMatchDetails?.id}}">
+          <ion-label>Lineup</ion-label>
+        </ion-tab-button>
+          
+      </ion-tab-bar>
+  </ng-template>
+      
+</ion-tabs>
+
+</ion-content>
